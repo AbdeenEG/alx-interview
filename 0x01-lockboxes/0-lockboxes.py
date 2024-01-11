@@ -26,4 +26,4 @@ def canUnlockAll(boxes):
 
             checked_boxes.add(boxId)
 
-    return n == len(checked_boxes
+    return n == len(checked_boxes)
