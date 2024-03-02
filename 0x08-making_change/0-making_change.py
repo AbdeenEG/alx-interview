@@ -1,24 +1,23 @@
 #!/usr/bin/python3
-"""
-making_change interview question
-"""
+"""A function to determine the fewest number of coins needed
+   to meet a given amount total"""
 
 
 def makeChange(coins, total):
-    """
-    function for making change algorithm
+    """This function will take a list of coins and use
+       that to calculate how much change the total will require
     """
     if total <= 0:
         return 0
 
-    # create an array to store the min number of --
-    min_coins = [float('inf')] * (total + 1)
-    min_coins[0] = 0
-
-    for coin in coins:
-        for i in range(coin, total + 1):
-            # update the min number of coins req for each value
-            min_coins[i] = min(min_coins[i], min_coins[i - coin] + 1)
-
-    # return the min number of coins required to reach the total value
-    return min_coins[total] if min_coins[total] != float('inf') else -1
+    else:
+        coin = sorted(coins)
+        coin.reverse()
+        counter = 0
+        for i in coin:
+            while(total >= i):
+                counter += 1
+                total -= i
+        if total == 0:
+            return counter
+        return -1
